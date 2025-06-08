@@ -1,32 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 .tentang-root {
     min-height: 100vh;
-    background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+    background: linear-gradient(135deg, #da5b5b 0%, #d8c35a 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 22px;
-    font-family: "Segoe UI", sans-serif;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.tentang-root::before {
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
 }
 
 .tentang-card {
-    background: rgba(0,0,0,0.5);
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     text-align: center;
-    max-width: 400px;
+    max-width: 500px;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    margin: 2rem;
+}
+
+.tentang-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 12px 40px 0 rgba(31, 38, 135, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .tentang-title {
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #fff, #ffe66d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
 }
 
 .tentang-description {
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    color: #fff;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tentang-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+
+    .tentang-title {
+        font-size: 2.5rem;
+    }
+
+    .tentang-description {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .tentang-card {
+        padding: 4rem 3rem;
+    }
+
+    .tentang-title {
+        font-size: 3.5rem;
+    }
+
+    .tentang-description {
+        font-size: 1.2rem;
+    }
 }

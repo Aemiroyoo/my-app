@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './pages/Home';
 import Tentang from './pages/Tentang';
 import Kontak from './pages/Kontak';
+import './App.css';
 
 function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul style={{ listStyle: 'none', display: 'flex', gap: '10px' }}>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/tentang">Tentang</Link></li>
-            <li><Link to="/kontak">Kontak</Link></li>
+        <nav className="nav-container">
+          <ul className="nav-list">
+            <li><NavLink to="/" className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink></li>
+            <li><NavLink to="/tentang" className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Tentang</NavLink></li>
+            <li><NavLink to="/kontak" className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Kontak</NavLink></li>
           </ul>
         </nav>
 
