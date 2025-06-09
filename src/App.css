@@ -1,3 +1,4 @@
+/* Reset and base styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 * {
@@ -8,18 +9,24 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #f8fafc;
 }
 
+/* Navigation styles */
 .nav-container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.nav-container.scrolled {
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .nav-list {
@@ -33,30 +40,43 @@ body {
     gap: 2rem;
 }
 
+/* Link styles */
 .nav-link {
     text-decoration: none;
-    color: #334155;
+    color: #fff;
     font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.75rem 1.25rem;
-    border-radius: 12px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
     position: relative;
-    letter-spacing: 0.3px;
 }
 
-.nav-link:hover {
+/* Scrolled state styles */
+.nav-container.scrolled .nav-link {
+    color: #1a1a1a;
+}
+
+.nav-container.scrolled .nav-link:hover {
     color: #3b82f6;
-    background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
-    transform: translateY(-1px);
+}
+
+.nav-container.scrolled .nav-link.active {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Hover and active states */
+.nav-link:hover {
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 .nav-link.active {
-    color: #2563eb;
-    background: linear-gradient(145deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
-    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
 }
 
+/* Underline animation */
 .nav-link::before {
     content: '';
     position: absolute;
@@ -75,8 +95,8 @@ body {
     width: 70%;
 }
 
-/* Animated Background */
-.nav-container::before {
+/* Animated top border */
+.nav-container.scrolled::before {
     content: '';
     position: absolute;
     top: 0;
@@ -96,33 +116,18 @@ body {
     100% { background-position: 200% 0%; }
 }
 
-/* Responsive Design */
+/* Responsive styles */
 @media (max-width: 768px) {
     .nav-container {
-        padding: 0.75rem;
+        padding: 0.75rem 1rem;
     }
 
     .nav-list {
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .nav-link {
         padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-    }
-
-    .nav-link:hover::before,
-    .nav-link.active::before {
-        width: 50%;
-    }
-}
-
-@media (min-width: 1024px) {
-    .nav-list {
-        gap: 3rem;
-    }
-    
-    .nav-link {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
